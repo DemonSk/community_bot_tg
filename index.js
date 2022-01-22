@@ -14,10 +14,12 @@ bot.start((ctx) =>
 bot.on("new_chat_participant", (ctx) => {
   let user_id = ctx.message.new_chat_participant.id;
   let first_name = ctx.message.new_chat_participant.first_name;
-  ctx.reply(
-    `Приветствую ${`[${first_name}](tg://user?id=${user_id})`} , представтесь пожалуйста по форме ^`,
-    { reply_to_message_id: reply_message, parse_mode: "Markdown" }
-  );
+  setTimeout(() => {
+    ctx.reply(
+      `Приветствую ${`[${first_name}](tg://user?id=${user_id})`} , представтесь пожалуйста по форме ^`,
+      { reply_to_message_id: reply_message, parse_mode: "Markdown" }
+    );
+  }, 2000);
 });
 bot.launch();
 
