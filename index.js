@@ -16,7 +16,7 @@ bot.on("new_chat_participant", (ctx) => {
   let first_name = ctx.message.new_chat_participant.first_name;
   setTimeout(() => {
     ctx.reply(
-      `Приветствую ${`[${first_name}](tg://user?id=${user_id})`} , представтесь пожалуйста по форме ^`,
+      `Приветствую ${`[${first_name}](tg://user?id=${user_id})`} , представьтесь пожалуйста по форме ^`,
       { reply_to_message_id: reply_message, parse_mode: "Markdown" }
     );
   }, 2000);
