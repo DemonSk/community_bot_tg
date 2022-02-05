@@ -35,6 +35,9 @@ bot.on("message", (ctx) => {
   if (ctx.message.from.id in new_members) {
     console.log(`Removed ${new_members[ctx.message.from.id]}`);
     delete new_members[ctx.message.from.id];
+  } else if (ctx.message.from.id in new_members_final) {
+    console.log(`Removed ${new_members_final[ctx.message.from.id]}`);
+    delete new_members_final[ctx.message.from.id];
   } else {
     if (ctx.message.left_chat_member) {
       ctx.deleteMessage(ctx.message.message_id);
