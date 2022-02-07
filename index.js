@@ -44,7 +44,7 @@ bot.on("message", (ctx) => {
     }
   }
 });
-cron.schedule("* 20 * * *", () => {
+cron.schedule("0 20 * * *", () => {
   new_members_final = new_members;
   new_members = {};
   if (
@@ -61,7 +61,7 @@ cron.schedule("* 20 * * *", () => {
       .sendMessage(
         chat_id,
         alert_message.concat(
-          "последнее предупреждение перед удалением. Представтесь пожалуйста по форме!"
+          "последнее предупреждение перед удалением. Представьтесь пожалуйста по форме!"
         ),
         { parse_mode: "Markdown", reply_to_message_id: reply_message }
       )
@@ -73,7 +73,7 @@ cron.schedule("* 20 * * *", () => {
     console.log("All answered");
   }
 });
-cron.schedule("* 21 * * *", () => {
+cron.schedule("0 21 * * *", () => {
   for (let user in new_members_final) {
     bot.telegram.banChatMember(chat_id, user);
     console.log(`${user} Banned`);
