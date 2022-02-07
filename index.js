@@ -6,7 +6,7 @@ const bot = new Telegraf(process.env.BOT_TOKEN);
 let reply_message = 713;
 let chat_id;
 let new_members = {};
-let new_members_final;
+let new_members_final = {};
 let alert_message;
 
 bot.catch((err, ctx) => {
