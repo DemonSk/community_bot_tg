@@ -44,7 +44,7 @@ bot.on("message", (ctx) => {
     }
   }
 });
-cron.schedule("0 20 * * *", () => {
+cron.schedule("0 18 * * *", () => {
   new_members_final = new_members;
   new_members = {};
   if (
@@ -73,10 +73,11 @@ cron.schedule("0 20 * * *", () => {
     console.log("All answered");
   }
 });
-cron.schedule("0 21 * * *", () => {
+cron.schedule("0 19 * * *", () => {
   for (let user in new_members_final) {
     bot.telegram.banChatMember(chat_id, user);
-    console.log(`${user} Banned`);
+    bot.telegram.unbanChatMember(chat_id, user);
+    console.log(`${user} Kicked`);
   }
 });
 bot.launch();
