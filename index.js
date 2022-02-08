@@ -78,11 +78,15 @@ cron.schedule("0 19 * * *", () => {
     bot.telegram.banChatMember(chat_id, user);
     bot.telegram.unbanChatMember(chat_id, user);
     console.log(`${user} Kicked`);
+  }
+  try {
     bot.telegram.deleteMessage(
       alert_message_info.chat.id,
       alert_message_info.message_id
     );
     console.log("Message deleted");
+  } catch (error) {
+    console.log("No message");
   }
 });
 bot.launch();
