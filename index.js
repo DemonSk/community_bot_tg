@@ -8,6 +8,7 @@ let chat_id;
 let new_members = {};
 let new_members_final = {};
 let alert_message;
+let alert_message_info;
 
 bot.catch((err, ctx) => {
   console.log(`Ooops, encountered an error for ${ctx.updateType}`, err);
@@ -65,10 +66,9 @@ cron.schedule("0 18 * * *", () => {
         ),
         { parse_mode: "Markdown", reply_to_message_id: reply_message }
       )
-      .then((message_info) => {
-        return message_info;
+      .then((result) => {
+        alert_message_info = result;
       });
-    console.log(message_info);
   } else {
     console.log("All answered");
   }
@@ -78,6 +78,11 @@ cron.schedule("0 19 * * *", () => {
     bot.telegram.banChatMember(chat_id, user);
     bot.telegram.unbanChatMember(chat_id, user);
     console.log(`${user} Kicked`);
+    bot.telegram.deleteMessage(
+      alert_message_info.chat.id,
+      alert_message_info.message_id
+    );
+    console.log("Message deleted");
   }
 });
 bot.launch();
