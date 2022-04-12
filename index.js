@@ -3,7 +3,7 @@ const cron = require("node-cron");
 require("dotenv").config();
 
 const bot = new Telegraf(process.env.BOT_TOKEN);
-let reply_message = 713;
+let reply_message = 2390;
 let chat_id;
 let new_members = {};
 let new_members_final = {};
