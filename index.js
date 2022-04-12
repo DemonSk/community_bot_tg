@@ -27,12 +27,13 @@ bot.on("new_chat_participant", (ctx) => {
   console.log(new_members);
   setTimeout(() => {
     ctx.reply(
-      `Приветствую ${`[${first_name}](tg://user?id=${user_id})`} , представьтесь пожалуйста по форме ^`,
+      `Greetings ${`[${first_name}](tg://user?id=${user_id})`} , please introduce yourself using the form ^`,
       { reply_to_message_id: reply_message, parse_mode: "Markdown" }
     );
   }, 2000);
 });
 bot.on("message", (ctx) => {
+  console.log(ctx.message);
   if (ctx.message.from.id in new_members) {
     console.log(`Removed ${new_members[ctx.message.from.id]}`);
     delete new_members[ctx.message.from.id];
@@ -62,7 +63,7 @@ cron.schedule("0 18 * * *", () => {
       .sendMessage(
         chat_id,
         alert_message.concat(
-          "последнее предупреждение перед удалением. Представьтесь пожалуйста по форме!"
+          "last warning before kick. Please introduce yourself in the form!"
         ),
         { parse_mode: "Markdown", reply_to_message_id: reply_message }
       )
