@@ -14,7 +14,7 @@ load_dotenv()
 
 
 # Introduction checks
-INTRODUCTION_TIMEOUT = 3600
+INTRODUCTION_TIMEOUT = 20
 INTRODUCTION_TRIES = 3
 
 # Introduction handlers
@@ -290,7 +290,7 @@ def get_users_data(filename='user_info.json') -> object:
 
 
 if __name__ == '__main__':
-    application = ApplicationBuilder().token(os.getenv("BOT_TOKEN")).build()
+    application = ApplicationBuilder().token(os.getenv("BOT_TOKEN")).read_timeout(7).get_updates_read_timeout(42).build()
 
     start_handler = CommandHandler('start', start)
     stats_command_handler = CommandHandler('stats', stats)
